@@ -1,53 +1,84 @@
 # Qt Calculator
 
-A simple calculator application built with Qt 6/QML in Qt Creator for a test task.
+A simple calculator application built with Qt 6/QML in Qt Creator as a test task.
+
+---
 
 ## Features
 
-- Basic math operations (+, -, *, /, %)
-- Parentheses support
-- Real-time expression display
-- Error handling for invalid input
-- Clear function to reset
-- Custom styled buttons with hover effects
+- Basic arithmetic operations: addition (+), subtraction (-), multiplication (*), division (/), and modulo (%).
+- Support for parentheses to handle operator precedence.
+- Real-time display of the current expression and calculation result.
+- Robust error handling for invalid input and division by zero.
+- Clear function to reset the calculator state.
+- Custom styled buttons with hover and press effects.
+- Long press support on "=" button to trigger additional functionality.
+- Dynamic creation of secret popup windows triggered by specific logic.
 
-## Technology
+---
 
-- **Qt 6** - Application framework
-- **QML** - Declarative UI
-- **C++17** - Business logic
-- **QJSEngine** - Expression evaluation
-- **CMake** - Build system
+## Technology Stack
 
-## Files
+- **Qt 6**: Application framework providing UI and event handling.
+- **QML**: Declarative UI language for building fluid and responsive interfaces.
+- **C++17**: Core business logic implementation via `CalcLogic` class.
+- **QJSEngine**: JavaScript engine used for safe evaluation of mathematical expressions.
+- **CMake**: Cross-platform build system for project configuration and compilation.
 
-- `calclogic.h` - Calculator logic header
-- `calclogic.cpp` - Calculator logic implementation
-- `main.cpp` - Application entry point
-- `Main.qml` - Main calculator UI
-- `CalcButton.qml` - Custom button component
-- `Calc.qml` - Calculator component
-- `CMakeLists.txt` - Build configuration
+---
 
-## How it works
+## Project Structure
 
-The `CalcLogic` class handles all calculator operations:
+| File               | Description                              |
+|--------------------|------------------------------------------|
+| `calclogic.h`      | Header for calculator logic class.       |
+| `calclogic.cpp`    | Implementation of calculator logic.      |
+| `main.cpp`         | Application entry point and setup.       |
+| `Main.qml`         | Main calculator UI definition.           |
+| `CalcButton.qml`   | Custom reusable button component.        |
+| `Calc.qml`         | Calculator component encapsulating logic and UI. |
+| `SecretWindow.qml` | Popup window shown as a secret feature.  |
+| `CMakeLists.txt`   | Build configuration file for CMake.      |
 
-- `Append(value)` - Adds numbers/operators
-- `Calculate()` - Evaluates the expression  
-- `Clear()` - Resets everything
+---
+
+## How It Works
+
+### CalcLogic Class
+
+- **Append(value: string)** — Adds numbers or operators to the current expression.
+- **Calculate()** — Safely evaluates the mathematical expression and updates the result.
+- **Clear()** — Resets the expression and result to initial empty states.
+- **startHoldTimer() / stopHoldTimer()** — Handles long press behavior on the "=" button.
+- **openSecretWindow() signal** — Triggers opening of a secret popup window.
+
+The class uses QJSEngine to parse and safely evaluate expressions, catching syntax errors or invalid operations such as division by zero.
+
+---
 
 ## UI Components
 
-**Main Calculator (main.qml)**
-- Two-line display showing expression and result
-- 4x5 grid layout with number and operator buttons
-- Color-coded buttons: numbers (light blue), operators (teal), clear (red)
+### Main Calculator (`Main.qml`)
 
-**Custom Button (CalcButton.qml)**
-- Reusable button component with customizable colors
-- Press animation and hover effects
-- Circular design with proper touch targets
+- Two-line display:
+  - **Expression display:** Shows the current input expression.
+  - **Result display:** Shows the calculated result.
+- Grid of buttons (4 columns x 5 rows) including digits, operators, clear, and equals.
+- Color-coded buttons for clarity:
+  - Numbers — light blue background with dark text.
+  - Operators — teal background.
+  - Clear button — red background.
+- The "=" button supports press and hold events for additional functionality.
+
+### CalcButton (`CalcButton.qml`)
+
+- Reusable button component with:
+  - Customizable background, pressed, and text colors.
+  - Circular shape for consistent touch targets.
+  - MouseArea handling click, press, release, and exit events.
+  - Visual feedback on press and hover.
+
+---
 
 ## Usage Example
 
@@ -58,32 +89,3 @@ calc.Append("+");
 calc.Append("3");
 calc.Calculate();
 // Result: "5"
-```
-
-## Building
-
-**Prerequisites:**
-- Qt Creator IDE
-- Qt 6.0 or later
-- CMake 3.16+
-- C++17 compiler
-
-**Build steps:**
-1. Open the project in Qt Creator
-2. Configure with Qt 6 kit
-3. Build and run (Ctrl+R)
-
-**Manual build:**
-```bash
-mkdir build
-cd build
-cmake ..
-cmake --build .
-./appCalcApp
-```
-
-## Notes
-
-- Uses JavaScript engine for safe math evaluation
-- Handles division by zero and syntax errors
-- Properties work with QML data binding
