@@ -1,6 +1,6 @@
 # Qt Calculator
 
-A simple calculator application built with Qt/QML for a test task.
+A simple calculator application built with Qt 6/QML in Qt Creator for a test task.
 
 ## Features
 
@@ -63,20 +63,22 @@ calc.Calculate();
 ## Building
 
 **Prerequisites:**
+- Qt Creator IDE
 - Qt 6.0 or later
 - CMake 3.16+
 - C++17 compiler
 
 **Build steps:**
+1. Open the project in Qt Creator
+2. Configure with Qt 6 kit
+3. Build and run (Ctrl+R)
+
+**Manual build:**
 ```bash
 mkdir build
 cd build
 cmake ..
 cmake --build .
-```
-
-**Run:**
-```bash
 ./appCalcApp
 ```
 
