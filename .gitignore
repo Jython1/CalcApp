@@ -1,0 +1,61 @@
+# ---- Qt/QML specific ----
+*.qmlc
+*.jsc
+*.qmlproject.user
+*.qbs.user
+*.qbs.user.*
+*.pro.user
+*.pro.user.*
+*.autosave
+*.moc
+*.obj
+*.o
+*.lo
+*.la
+*.so
+*.a
+*.qrc.depends
+
+# ---- Qt Creator ----
+*.user
+*.user.*
+*.pro.user
+*.pro.user.*
+*.qmlproject.user
+*.creator
+*.creator.user
+*.creator.user.*
+
+# ---- Build folders ----
+/build/
+/out/
+/bin/
+/lib/
+/debug/
+/release/
+/x64/
+/x86/
+
+# ---- CMake ----
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+_qt_internal_*
+
+# ---- Others ----
+*.log
+*.tmp
+*.swp
+*.DS_Store
+Thumbs.db
+
+# ---- Qt Installer Framework ----
+*.dat
+*.7z
+*.qtifw
+
