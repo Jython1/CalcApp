@@ -21,6 +21,7 @@ qt_add_qml_module(appCalcApp
         Main.qml
         CalcButton.qml
         Calc.qml
+        QML_FILES SecretWindow.qml
 )
 
 target_link_libraries(appCalcApp

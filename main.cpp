@@ -9,8 +9,6 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    // QQuickStyle::setStyle("Material");  // НЕ вызываем!
-
     QQmlApplicationEngine engine;
     CalcLogic calcLogic;
 
